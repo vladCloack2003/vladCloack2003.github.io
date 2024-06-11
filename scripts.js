@@ -1,12 +1,17 @@
 document.addEventListener('DOMContentLoaded', function () {
-    //Контекстное меню в FAQ 
+    //Контекстное меню
     function setupFAQ() {
         const faqItems = document.querySelectorAll('.faq-item');
-    
+        
         faqItems.forEach(item => {
+            const faqAnswer = item.querySelector('.faq-answer');
             const faqQuestion = item.querySelector('.faq-question');
             const faqToggle = item.querySelector('.faq-toggle');
-    
+            
+            faqAnswer.style.maxHeight = '0';
+            faqAnswer.style.overflow = 'hidden';
+            faqQuestion.style.marginBottom = '0';
+
             faqQuestion.addEventListener('click', function () {
                 toggleFAQ(item);
             });
@@ -16,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 toggleFAQ(item);
             });
         });
-    
+        
         function toggleFAQ(item) {
             const faqAnswer = item.querySelector('.faq-answer');
             const faqQuestion = item.querySelector('.faq-question');
@@ -30,11 +35,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 faqQuestion.style.marginBottom = marginBot;
             } else {
                 item.classList.remove('open');
-                faqAnswer.style.maxHeight = 0;
-                faqQuestion.style.marginBottom = 0;
+                faqAnswer.style.maxHeight = '0';
+                faqQuestion.style.marginBottom = '0';
             }
         }
     }
+    
     setupFAQ();
 
     // Хранение данных в localStorage
