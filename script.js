@@ -2,26 +2,27 @@ document.addEventListener('DOMContentLoaded', function () {
     //Контекстное меню
     function setupFAQ() {
         const faqItems = document.querySelectorAll('.faq-item');
-        
+    
         faqItems.forEach(item => {
             const faqAnswer = item.querySelector('.faq-answer');
             const faqQuestion = item.querySelector('.faq-question');
             const faqToggle = item.querySelector('.faq-toggle');
-            
+    
             faqAnswer.style.maxHeight = '0';
             faqAnswer.style.overflow = 'hidden';
             faqQuestion.style.marginBottom = '0';
-
-            faqQuestion.addEventListener('click', function () {
+            faqAnswer.style.transition = 'max-height 0.3s ease';
+    
+            faqQuestion.addEventListener('click', function() {
                 toggleFAQ(item);
             });
     
-            faqToggle.addEventListener('click', function (event) {
+            faqToggle.addEventListener('click', function(event) {
                 event.stopPropagation();
                 toggleFAQ(item);
             });
         });
-        
+    
         function toggleFAQ(item) {
             const faqAnswer = item.querySelector('.faq-answer');
             const faqQuestion = item.querySelector('.faq-question');
@@ -29,10 +30,8 @@ document.addEventListener('DOMContentLoaded', function () {
     
             if (!isOpen) {
                 item.classList.add('open');
-                const maxHeight = faqAnswer.scrollHeight + 'px';
-                const marginBot = window.innerWidth <= 767 ? '5rem' : '2rem';
-                faqAnswer.style.maxHeight = maxHeight;
-                faqQuestion.style.marginBottom = marginBot;
+                faqAnswer.style.maxHeight = faqAnswer.scrollHeight + 'px';
+                faqQuestion.style.marginBottom = window.innerWidth <= 767 ? '5rem' : '2rem';
             } else {
                 item.classList.remove('open');
                 faqAnswer.style.maxHeight = '0';
@@ -40,11 +39,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
-    
     setupFAQ();
 
     // Хранение данных в localStorage
-    function Storage() {
+    function StorageData() {
         const faqItems = document.querySelectorAll('.faq-item');
         const faqData = [];
     
@@ -65,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log("Данные, которые хранятся в localStorage", storedData);
         }
     }
-    Storage();
+    StorageData();
 
     //Слайдер для изображений
     function setupCarousel() {
