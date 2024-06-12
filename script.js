@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
             faqAnswer.style.overflow = 'hidden';
             faqQuestion.style.marginBottom = '0';
             faqAnswer.style.transition = 'max-height 0.5s ease';
-            faqQuestion.style.transition = 'margin-bottom 0.5s ease'; // Добавление плавного перехода для marginBottom
+            faqQuestion.style.transition = 'margin-bottom 0.5s ease';
     
             faqQuestion.addEventListener('click', function() {
                 toggleFAQ(item);
