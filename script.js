@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!isOpen) {
                 item.classList.add('open');
                 faqAnswer.style.maxHeight = faqAnswer.scrollHeight + 'px';
-                faqQuestion.style.marginBottom = window.innerWidth <= 768 ? '5rem' : '2rem';
+                faqQuestion.style.marginBottom = window.innerWidth <= 1200 ? '5rem' : '2rem';
             } else {
                 item.classList.remove('open');
                 faqAnswer.style.maxHeight = '0';
